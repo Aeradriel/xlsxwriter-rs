@@ -79,6 +79,7 @@ pub use format::*;
 pub use validation::*;
 pub use workbook::*;
 pub use worksheet::*;
+mod conditionnal_formatting;
 
 use std::ffi::CString;
 
