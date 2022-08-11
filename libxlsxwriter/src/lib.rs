@@ -67,6 +67,7 @@
 extern crate libxlsxwriter_sys;
 
 mod chart;
+mod conditional_formatting;
 mod error;
 mod format;
 mod validation;
@@ -74,12 +75,14 @@ mod workbook;
 mod worksheet;
 
 pub use chart::*;
+pub use conditional_formatting::*;
 pub use error::XlsxError;
 pub use format::*;
 pub use validation::*;
 pub use workbook::*;
 pub use worksheet::*;
-mod conditionnal_formatting;
+
+pub use libxlsxwriter_sys::lxw_conditional_format_types_LXW_CONDITIONAL_TYPE_CELL;
 
 use std::ffi::CString;
 

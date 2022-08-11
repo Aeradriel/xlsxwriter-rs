@@ -1,4 +1,4 @@
-use crate::conditionnal_formatting::ConditionnalFormat;
+use crate::conditional_formatting::ConditionalFormat;
 
 use super::{convert_bool, Chart, DataValidation, Format, FormatColor, Workbook, XlsxError};
 use std::ffi::CString;
@@ -2066,19 +2066,19 @@ impl<'a> Worksheet<'a> {
             }
         }
     }
-    
-    pub fn conditionnal_format_cell(
+
+    pub fn conditional_format_cell(
         &mut self,
         row: WorksheetRow,
         col: WorksheetCol,
-        format: ConditionnalFormat,
+        format: &mut ConditionalFormat,
     ) -> Result<(), XlsxError> {
         unsafe {
             let result = libxlsxwriter_sys::worksheet_conditional_format_cell(
                 self.worksheet,
                 row,
                 col,
-                format._internal_format,
+                &mut format._internal_format as *mut libxlsxwriter_sys::lxw_conditional_format,
             );
             if result == libxlsxwriter_sys::lxw_error_LXW_NO_ERROR {
                 Ok(())
@@ -2088,13 +2088,13 @@ impl<'a> Worksheet<'a> {
         }
     }
 
-    pub fn conditionnal_format_range(
+    pub fn conditional_format_range(
         &mut self,
         first_row: WorksheetRow,
         first_col: WorksheetCol,
         last_row: WorksheetRow,
         last_col: WorksheetCol,
-        format: ConditionnalFormat,
+        format: &mut ConditionalFormat,
     ) -> Result<(), XlsxError> {
         unsafe {
             let result = libxlsxwriter_sys::worksheet_conditional_format_range(
@@ -2103,7 +2103,7 @@ impl<'a> Worksheet<'a> {
                 first_col,
                 last_row,
                 last_col,
-                format._internal_format,
+                &mut format._internal_format as *mut libxlsxwriter_sys::lxw_conditional_format,
             );
             if result == libxlsxwriter_sys::lxw_error_LXW_NO_ERROR {
                 Ok(())

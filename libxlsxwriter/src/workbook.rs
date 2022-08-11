@@ -15,6 +15,7 @@ use std::rc::Rc;
 ///     workbook.close()
 /// }
 /// ```
+#[derive(Debug)]
 pub struct Workbook {
     workbook: *mut libxlsxwriter_sys::lxw_workbook,
     _workbook_name: CString,

@@ -2,7 +2,7 @@ use super::Workbook;
 use std::ffi::CString;
 
 #[allow(clippy::unreadable_literal)]
-#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
 pub enum FormatColor {
     Black,
     Blue,
@@ -275,6 +275,7 @@ impl FormatBorder {
 /// This Format object has the functions and properties that are available for formatting cells in Excel.
 ///
 /// The properties of a cell that can be formatted include: fonts, colors, patterns, borders, alignment and number formatting.
+#[derive(Debug)]
 pub struct Format<'a> {
     pub(crate) _workbook: &'a Workbook,
     pub(crate) format: *mut libxlsxwriter_sys::lxw_format,
