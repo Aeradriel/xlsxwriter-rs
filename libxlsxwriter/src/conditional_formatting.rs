@@ -1,7 +1,5 @@
-use std::{
-    ffi::{c_char, CString},
-    ptr::null_mut,
-};
+use std::os::raw::c_char;
+use std::{ffi::CString, ptr::null_mut};
 
 use crate::{convert_bool, Format, FormatColor};
 
